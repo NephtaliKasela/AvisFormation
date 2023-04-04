@@ -1,0 +1,16 @@
+﻿@model List<Data.Formation>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Toutes les formations";
+}
+<h1>TOUTES LES FORMATIONS</h1>
+@foreach (var formation in Model)
+{
+    <p>Id de la formation          : @formation.Id</p>
+    //<p>Nom de la formation         : <a href="/Formation/DetailsFormation?idFormation=@formation.Id">@formation.name</a></p>
+    <p>Nom de la formation         : <a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Id">@formation.name</a></p>
+    <p>NomSeo de la formation      : @formation.nameSeo</p>
+    <p>Description de la formation : @formation.Descriotion</p>
+}

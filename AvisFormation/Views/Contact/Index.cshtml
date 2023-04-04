@@ -1,0 +1,18 @@
+﻿@model ContactViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Contact</h1>
+
+@{  /* Get info from the user */  }
+<form action="/Contact/SaveMessage" method="post">
+    @Html.ValidationSummary()
+
+    <input type="text" name="name" value="@Model.Name" />
+    <input type="email" name="email" value="@Model.Email" />
+    <textarea cols="10" name="message">@Model.Message</textarea>
+
+    <input type="submit" value="Send" />
+</form>
+

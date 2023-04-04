@@ -1,0 +1,29 @@
+﻿@model List<Data.Formation>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<br />
+<h1 class="text-center">VOICI QUELQUES FORMATIONS</h1>
+<br />
+@foreach (var formation in Model)
+{
+    <div>
+        <p>Id de la formation          : @formation.Id</p>
+        <p>Nom de la formation         : <a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Id">@formation.name</a></p>
+        <p>NomSeo de la formation      : @formation.nameSeo</p>
+        <p>Description de la formation : @formation.Descriotion</p>
+    </div>
+    <br />
+}
+@section Scripts 
+{
+    <script>
+        $(document).ready( function() { alert('Hi Nepht !'); } );
+    </script>
+} 
