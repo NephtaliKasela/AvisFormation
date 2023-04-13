@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    internal class FormationRepository: IFormationRepository
+    public class FormationRepository: IFormationRepository
     {
         MonDBContext _context;
 

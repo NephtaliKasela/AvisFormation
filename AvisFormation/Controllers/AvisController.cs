@@ -6,6 +6,11 @@ namespace AvisFormation.Controllers
 {
     public class AvisController : Controller
     {
+        IFormationRepository _repository;
+        public AvisController(IFormationRepository repository)
+        { 
+            _repository= repository;
+        }
         public IActionResult LaisserUnAvis(string idFormation)
         {
             int iIdFormation = -1;
@@ -14,8 +19,7 @@ namespace AvisFormation.Controllers
                 return RedirectToAction("ToutesLesFormations", "Formation");
             }
 
-            FormationMemoryRepository repository = new FormationMemoryRepository();
-            var formation = repository.GetFormationById(iIdFormation);
+            var formation = _repository.GetFormationById(iIdFormation);
 
             if (formation == null)
             {

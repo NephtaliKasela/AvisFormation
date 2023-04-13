@@ -11,9 +11,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// another
+// Add services to the container.
 builder.Services.AddDbContext<MonDBContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<IFormationRepository, FormationRepository>();
 // end
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -1,6 +1,6 @@
 ﻿namespace Data
 {
-    internal interface IFormationRepository
+    public interface IFormationRepository
     {
         public List<Formation> GetAllFormations();
         public List<Formation> GetFormations(int number);

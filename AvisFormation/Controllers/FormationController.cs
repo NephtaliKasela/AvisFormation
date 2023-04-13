@@ -5,14 +5,18 @@ namespace AvisFormation.Controllers
 {
     public class FormationController : Controller
     {
+        IFormationRepository _repository;
+        public FormationController(IFormationRepository repository)
+        {
+            _repository= repository;
+        }
         public IActionResult Index()
         {
             return View();
         }
         public IActionResult ToutesLesFormations()
         {
-            FormationMemoryRepository repository = new FormationMemoryRepository();
-            var listFormations = repository.GetAllFormations();
+            var listFormations = _repository.GetAllFormations();
             return View(listFormations);
 
         }
@@ -25,8 +29,7 @@ namespace AvisFormation.Controllers
                 return RedirectToAction("ToutesLesFormations");
             }
 
-            FormationMemoryRepository repository = new FormationMemoryRepository();
-            var formation = repository.GetFormationById(iIdFormation);
+            var formation = _repository.GetFormationById(iIdFormation);
 
             if(formation == null)
             {
