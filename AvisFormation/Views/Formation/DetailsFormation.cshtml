@@ -1,7 +1,20 @@
-﻿@model Data.Formation
+﻿@model DetailFormationViewModel
 @{
-    ViewData["Title"] = Model.name;
+    ViewData["Title"] = Model.Formation.name;
 }
 
-<h1>@Model.name</h1>
-<p>@Model.Descriotion</p>
+<h1>@Model.Formation.name</h1>
+<p>@Model.Formation.Descriotion</p>
+
+<h6>Mark : @Model.NoteMoyenne / 5</h6>
+<div>
+    @foreach(var avis in Model.Formation.Avis)
+{
+    <div>
+        <h6>@avis.NomUtilisateur</h6>
+        <p>@avis.FormationId</p>
+        <p>@avis.Commentaire</p>
+        <p>@avis.Note</p>
+    </div>
+}
+</div>

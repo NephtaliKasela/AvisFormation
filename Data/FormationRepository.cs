@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Data
 
         public Formation GetFormationById(int iIdFormation)
         {
-            return _context.Formations.FirstOrDefault(f => f.Id == iIdFormation);
+            return _context.Formations.Include("Avis").FirstOrDefault(f => f.Id == iIdFormation);
         }
     }
 }

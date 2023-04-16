@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using AvisFormation.Models;
+using Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AvisFormation.Controllers
@@ -36,7 +37,14 @@ namespace AvisFormation.Controllers
                 return RedirectToAction("ToutesLesFormations");
             }    
 
-            return View(formation);
+            var vm = new DetailFormationViewModel();
+            vm.Formation = formation;
+            if(formation.Avis != null && formation.Avis.Count > 0)
+            {
+                vm.NoteMoyenne = (float)formation.Avis.Select(a => a.Note).ToList().Average();
+            }
+
+            return View(vm);
         }
     }
 }

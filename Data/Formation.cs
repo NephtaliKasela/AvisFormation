@@ -12,5 +12,6 @@ namespace Data
         public string name { get; set; }  
         public string nameSeo { get; set; }
         public string Descriotion { get; set; }
+        public List<Avis> Avis { get; set; }
     }
 }

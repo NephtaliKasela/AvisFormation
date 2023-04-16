@@ -14,12 +14,17 @@ namespace Data
         }
 
         public DbSet<Formation> Formations { get; set; }
+        public DbSet<Avis> Avis { get; set; }
 
+        //get data
+        FormationMemoryRepository repository = new FormationMemoryRepository();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Formation>()
                 .Property(f => f.Descriotion)
                 .HasMaxLength(500);
+
+            modelBuilder.Entity<Formation>().HasData(repository.GetAllFormations());
         }
     }
 }

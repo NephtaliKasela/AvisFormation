@@ -6,10 +6,12 @@ namespace AvisFormation.Controllers
 {
     public class AvisController : Controller
     {
-        IFormationRepository _repository;
-        public AvisController(IFormationRepository repository)
+        IFormationRepository _formationRepository;
+        IAvisRepository _avisRepository;
+        public AvisController(IFormationRepository formationRepository, IAvisRepository avisRepository)
         { 
-            _repository= repository;
+            _formationRepository= formationRepository;
+            _avisRepository= avisRepository;
         }
         public IActionResult LaisserUnAvis(string idFormation)
         {
@@ -19,7 +21,7 @@ namespace AvisFormation.Controllers
                 return RedirectToAction("ToutesLesFormations", "Formation");
             }
 
-            var formation = _repository.GetFormationById(iIdFormation);
+            var formation = _formationRepository.GetFormationById(iIdFormation);
 
             if (formation == null)
             {
@@ -47,8 +49,7 @@ namespace AvisFormation.Controllers
                 return RedirectToAction("LaisserUnAvis", new { idFormation = viewModel.IdFormation });
             }
 
-            AvisRepository repository = new AvisRepository();
-            repository.SaveAvis(viewModel.Commentaire, viewModel.Nom, viewModel.IdFormation);
+            _avisRepository.SaveAvis(viewModel.Commentaire, viewModel.Nom, viewModel.IdFormation, viewModel.Note);
 
             return RedirectToAction("DetailsFormation", "Formation", new { idFormation = viewModel.IdFormation });
         }
