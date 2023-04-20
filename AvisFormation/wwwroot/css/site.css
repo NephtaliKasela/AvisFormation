@@ -16,3 +16,68 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.mt-4{
+    background-color:black;
+    color:orange;
+    margin-bottom: 5px;
+}
+
+.avantages {
+    background-color: #F5F5F5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+.orange{
+    color:orange;
+}
+
+.section-badge {
+    background-color: cornsilk;
+}
+
+.paragraph11{
+    padding-top:15px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:15px;
+}
+
+.widget-top {
+    background-color: white;
+    padding: 5px;
+}
+
+.widget-bottom {
+    background-color: orange;
+    color: white;
+
+    padding: 5px;
+}
+
+.widget {
+    border: 1px solid orange;
+    border-radius: 4px;
+    margin: 15px;
+}
+
+.formation-block {
+    background-color: white;
+
+    border: 0.5px solid orange;
+    border-color: darkgoldenrod;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.avis-block {
+    background-color: #F5F5F5;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 5px;
+}

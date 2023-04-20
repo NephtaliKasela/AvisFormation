@@ -3,12 +3,68 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+
+<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
+    <h1>Avis Formations</h1>
+    <p>We provide the best training in the wold !</p>
 </div>
 
-<br />
+<section class="avantages">
+    <div class="row text-center">
+        <div class="col-md-6 col-lg-3">
+            <span class="fa fa-check fa-3x orange"></span>
+            <h3>Authentiques</h3>
+            <p>Des avis d'élèves bien réels.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <span class="fa fa-glasses fa-3x orange"></span>
+            <h3>Transparance</h3>
+            <p>Rien ne vous est cache.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <span><i class="fa-solid fa-thumbs-up fa-3x orange"></i></span>
+            <h3>Platforme indépendante</h3>
+            <p>Indépendances de organismes de formation</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <span class="fa fa-dollar-sign fa-3x orange"></span>
+            <h3>Gratuit</h3>
+            <p>Tout notre travail gratuit pour vous !</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-badge text-center">
+    <div class="row">
+        <div class="col-md-8 col-lg-8 paragraph11">
+            <h4>Professionnels de la formation, affichez notre badge sur</h4>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            <div class="widget">
+                <div class="widget-top">
+                    <h6>Avis élèves 4.8/5 <span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span></h6>
+                </div>
+                <div class="widget-bottom">
+                    <h7>Avis récoltés par AvisFormations.Fr</h7>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+@*<br />
 <h1 class="text-center">VOICI QUELQUES FORMATIONS</h1>
 <br />
 @foreach (var formation in Model)
@@ -20,7 +76,8 @@
         <p>Description de la formation : @formation.Descriotion</p>
     </div>
     <br />
-}
+}*@
+
 @section Scripts 
 {
     <script>

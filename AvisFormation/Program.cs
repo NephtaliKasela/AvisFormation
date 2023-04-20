@@ -17,6 +17,7 @@ builder.Services.AddDbContext<MonDBContext>(options =>
 
 builder.Services.AddTransient<IFormationRepository, FormationRepository>();
 builder.Services.AddTransient<IAvisRepository, AvisRepository>();
+builder.Services.AddTransient<IContactRepository, ContactRepository>();
 // end
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

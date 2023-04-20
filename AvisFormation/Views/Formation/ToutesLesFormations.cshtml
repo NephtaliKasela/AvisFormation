@@ -6,11 +6,22 @@
     ViewData["Title"] = "Toutes les formations";
 }
 <h1>TOUTES LES FORMATIONS</h1>
-@foreach (var formation in Model)
-{
-    <p>Id de la formation          : @formation.Id</p>
-    //<p>Nom de la formation         : <a href="/Formation/DetailsFormation?idFormation=@formation.Id">@formation.name</a></p>
-    <p>Nom de la formation         : <a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Id">@formation.name</a></p>
-    <p>NomSeo de la formation      : @formation.nameSeo</p>
-    <p>Description de la formation : @formation.Descriotion</p>
-}
+<br />
+<br />
+<div class="section-formations text-center">
+    <div class="row">
+        @foreach (var formation in Model)
+        {
+            <div class="formation-block col-sm-6 col-md-3 col-lg-3">
+                @*<p>Id de la formation          : @formation.Id</p>*@
+                <p><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Id">@formation.name</a></p>
+                <p>NomSeo de la formation      : @formation.nameSeo</p>
+                <p>Description de la formation : @formation.Descriotion</p>
+
+                <h6>Avis élèves 4.8/5 <span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span></h6>
+            </div>
+        }
+    </div>
+</div>
+
+

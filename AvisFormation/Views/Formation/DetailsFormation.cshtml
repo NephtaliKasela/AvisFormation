@@ -4,17 +4,35 @@
 }
 
 <h1>@Model.Formation.name</h1>
-<p>@Model.Formation.Descriotion</p>
+<h6>@Model.Formation.Descriotion</h6>
+<br />
 
-<h6>Mark : @Model.NoteMoyenne / 5</h6>
-<div>
-    @foreach(var avis in Model.Formation.Avis)
-{
-    <div>
-        <h6>@avis.NomUtilisateur</h6>
-        <p>@avis.FormationId</p>
-        <p>@avis.Commentaire</p>
-        <p>@avis.Note</p>
-    </div>
-}
+<div class="widget-top">
+    <h6>
+        Mark : @Model.NoteMoyenne / 5
+        @for(int i = 1; i < Model.NoteMoyenne; i++)
+        {
+            <span class="fa fa-star orange"></span>
+        }
+    </h6>
 </div>
+
+<h7>Voici ce qu'en disent les anciens élèves :</h7>
+<br />
+    
+@foreach(var avis in Model.Formation.Avis)
+{
+<div class="avis-block">
+
+    <div>
+        @avis.Note/5
+        @for (int i = 1; i < avis.Note; i++)
+        {
+            <span class="fa fa-star orange"></span>
+        }
+    </div>
+        <div><i><h6>@avis.NomUtilisateur</h6></i></div>
+        <div><h6>@avis.Commentaire</h6></div>
+</div>
+}
+

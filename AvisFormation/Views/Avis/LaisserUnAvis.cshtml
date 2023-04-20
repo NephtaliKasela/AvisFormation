@@ -11,12 +11,19 @@
 <form action="/Avis/SaveComment" method="post">
     @Html.ValidationSummary()
 
-    <input type="text" name="nom" value="@Model.Nom" />
+    <div class="form-group">
+        <label>Nom </label>
+        <input type="text" name="nom" value="@Model.Nom" />
+    </div>
+    
     <br />
     <p>Merci d'ecrire votre avis ci-dessous: </p>
 
-    <textarea cols="5" name="commentaire">@Model.Commentaire</textarea>
-    <select name="note">
+    <textarea cols="5" name="commentaire" class="form-control">@Model.Commentaire</textarea>
+    <br />
+    <div>
+        <label>Selectionner une note</label>
+        <select name="note" class="form-control">
         <option>1</option>
         <option>1.5</option>
         <option>2</option>
@@ -27,6 +34,8 @@
         <option>4.5</option>
         <option>5</option>
     </select>
+    </div>
+    
     <input type="submit" value="Poster votre avis"/>
     <input type="hidden" name="idFormation" value="@Model.IdFormation"/>
     <input type="hidden" name="nomFormation" value="@Model.NomFormation" />
