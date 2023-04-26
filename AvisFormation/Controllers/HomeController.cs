@@ -22,8 +22,19 @@ namespace AvisFormation.Controllers
 
         public IActionResult Index()
         {
-            var listFormation = _repository.GetFormations(2);
-            return View(listFormation);
+            var listFormations = _repository.GetFormations(3);
+            var vm = new List<DetailFormationViewModel>();
+            foreach(var f in listFormations)
+            {
+                vm.Add(new DetailFormationViewModel { Formation = f, NoteMoyenne = (float)f.Avis.Select(a => a.Note).DefaultIfEmpty(0).Average() });
+            }
+            return View(vm);
+        }
+
+        public IActionResult TestRedirectionOk()
+        {
+            
+            return View();
         }
 
         //public IActionResult Privacy()

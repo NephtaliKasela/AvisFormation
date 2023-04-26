@@ -1,5 +1,6 @@
 ﻿using AvisFormation.Models;
 using Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AvisFormation.Controllers
@@ -13,6 +14,8 @@ namespace AvisFormation.Controllers
             _formationRepository= formationRepository;
             _avisRepository= avisRepository;
         }
+
+        [Authorize]
         public IActionResult LaisserUnAvis(string idFormation)
         {
             int iIdFormation = -1;
@@ -35,6 +38,7 @@ namespace AvisFormation.Controllers
             return View(vm);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult SaveComment(LaisserUnAvisViewModel viewModel)
         {

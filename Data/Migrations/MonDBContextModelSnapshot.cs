@@ -139,6 +139,20 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Data.ReRouting", b =>
+                {
+                    b.Property<string>("OldUrl")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("NewUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OldUrl");
+
+                    b.ToTable("ReRouting");
+                });
+
             modelBuilder.Entity("Data.Avis", b =>
                 {
                     b.HasOne("Data.Formation", "Formation")

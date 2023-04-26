@@ -1,6 +1,9 @@
 using AvisFormation.Data;
 using Data;
+using Data.Middlewares;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.AspNetCore.Routing.Template;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +21,12 @@ builder.Services.AddDbContext<MonDBContext>(options =>
 builder.Services.AddTransient<IFormationRepository, FormationRepository>();
 builder.Services.AddTransient<IAvisRepository, AvisRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
+
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<GzipCompressionProvider>();
+});
 // end
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -39,6 +48,7 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseResponseCompression();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -47,8 +57,26 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "Contact",
+    pattern: "contactez-nous",
+    defaults: new { controller = "Contact", action = "index" });
+
+app.MapControllerRoute(
+    name: "Contact",
+    pattern: "contactez-nous",
+    defaults: new { controller = "Contact", action = "index" });
+
+app.MapControllerRoute(
+    name: "ToutesLesFormations",
+    pattern: "toutes-les-formations",
+    defaults: new { controller = "Formation", action = "ToutesLesFormations" });
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
+
+//app.UseMiddleware<RedirectionPermanentMiddleware>();

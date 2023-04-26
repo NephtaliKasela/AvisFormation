@@ -3,16 +3,33 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Contact</h1>
+<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
+    <h2>Contactez nous !</h2>
+</div>
+<br />
 
 @{  /* Get info from the user */  }
 <form action="/Contact/SaveMessage" method="post">
-    @Html.ValidationSummary()
-
-    <input type="text" name="name" value="@Model.Name" />
-    <input type="email" name="email" value="@Model.Email" />
-    <textarea cols="10" name="message">@Model.Message</textarea>
-
-    <input type="submit" value="Send" />
+    <div class="form-group">
+        <label>Nom :</label>
+        <input type="text" name="name" value="@Model.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Email :</label>
+        <input type="email" name="email" value="@Model.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Message :</label>
+        <textarea cols="10" name="message" class="form-control">@Model.Message</textarea>
+    </div>
+    
+    <br />
+    <input type="submit" value="Send" class="btn-lg btn-outline-warning" />
+    <br />
+    <br />
+    <div class="widget-bottom">
+        @Html.ValidationSummary()
+    </div>
+    
 </form>
 

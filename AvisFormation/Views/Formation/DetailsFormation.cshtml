@@ -3,14 +3,20 @@
     ViewData["Title"] = Model.Formation.name;
 }
 
-<h1>@Model.Formation.name</h1>
-<h6>@Model.Formation.Descriotion</h6>
+<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
+    <h2>@Model.Formation.name</h2>
+    <h6>@Model.Formation.Descriotion</h6>
+</div>
 <br />
+
+<div class="widget-bottom">
+    <a asp-controller="Avis" asp-action="LaisserUnAvis" asp-route-idFormation="@Model.Formation.Id"><h6>Laisser un avis</h6></a>
+</div>
 
 <div class="widget-top">
     <h6>
         Mark : @Model.NoteMoyenne / 5
-        @for(int i = 1; i < Model.NoteMoyenne; i++)
+        @for(int i = 1; i <= Model.NoteMoyenne; i++)
         {
             <span class="fa fa-star orange"></span>
         }
@@ -26,7 +32,7 @@
 
     <div>
         @avis.Note/5
-        @for (int i = 1; i < avis.Note; i++)
+        @for (int i = 1; i <= avis.Note; i++)
         {
             <span class="fa fa-star orange"></span>
         }

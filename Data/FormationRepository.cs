@@ -18,12 +18,12 @@ namespace Data
 
         public List<Formation> GetAllFormations()
         {
-            return _context.Formations.ToList();
+            return _context.Formations.Include("Avis").ToList();
         }
 
         public List<Formation> GetFormations(int number)
         {
-            return _context.Formations.OrderBy(qu => Guid.NewGuid()).Take(number).ToList();
+            return _context.Formations.Include("Avis").OrderBy(qu => Guid.NewGuid()).Take(number).ToList();
         }
 
         public Formation GetFormationById(int iIdFormation)

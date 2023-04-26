@@ -4,25 +4,27 @@
 }
 
 <br />
-<h1>Laisser un avis sur la formation: @Model.NomFormation</h1>
+<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
+    <h2>@Model.NomFormation</h2>
+    <h4>Laisser un avis sur la formation</h4>
+</div>
 <br />
 
 @{  /* Get info from the user */  }
 <form action="/Avis/SaveComment" method="post">
-    @Html.ValidationSummary()
+    @*@Html.ValidationSummary()*@
 
     <div class="form-group">
-        <label>Nom </label>
-        <input type="text" name="nom" value="@Model.Nom" />
+        <label>Nom :</label>
+        <input type="text" name="nom" value="@Model.Nom" class="form-control" />
     </div>
     
     <br />
-    <p>Merci d'ecrire votre avis ci-dessous: </p>
-
+    <p>Merci d'ecrire votre avis ci-dessous : </p>
     <textarea cols="5" name="commentaire" class="form-control">@Model.Commentaire</textarea>
     <br />
     <div>
-        <label>Selectionner une note</label>
+        <label>Selectionner une note :</label>
         <select name="note" class="form-control">
         <option>1</option>
         <option>1.5</option>
@@ -36,7 +38,11 @@
     </select>
     </div>
     
-    <input type="submit" value="Poster votre avis"/>
+    <br />
+    <input type="submit" value="Poster votre avis" class="btn-lg btn-outline-success" />
     <input type="hidden" name="idFormation" value="@Model.IdFormation"/>
     <input type="hidden" name="nomFormation" value="@Model.NomFormation" />
+    <br />
+    <br />
+    <div asp-validation-summary="All" class="widget-bottom text-danger"></div>
 </form>

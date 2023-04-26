@@ -16,6 +16,7 @@ namespace Data
         public DbSet<Formation> Formations { get; set; }
         public DbSet<Avis> Avis { get; set; }
         public DbSet<ContactMessage> Messages { get; set; }
+        public DbSet<ReRouting> ReRouting { get; set; }
 
         //get data
         FormationMemoryRepository repository = new FormationMemoryRepository();

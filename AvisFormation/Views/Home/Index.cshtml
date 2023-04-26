@@ -1,4 +1,4 @@
-﻿@model List<Data.Formation>
+﻿@model List<DetailFormationViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -47,7 +47,23 @@
         <div class="col-md-4 col-lg-4">
             <div class="widget">
                 <div class="widget-top">
-                    <h6>Avis élèves 4.8/5 <span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span><span class="fa fa-star orange"></span></h6>
+                    @{
+                        double note = 0;
+                        @foreach (var formation in Model)
+                        {
+                            note += formation.NoteMoyenne;
+                        }
+                        double noteFinale = 0;
+                        noteFinale = (note * 5) / (Model.Count * 5);
+                        noteFinale = Math.Round(noteFinale);
+                        <h6>
+                            Avis élèves @noteFinale/5
+                            @for (int i = 1; i < noteFinale; i++)
+                            {
+                                <span class="fa fa-star orange"></span>
+                            }
+                        </h6>
+                    }
                 </div>
                 <div class="widget-bottom">
                     <h7>Avis récoltés par AvisFormations.Fr</h7>
@@ -59,24 +75,38 @@
 
 
 
+<div class="section-formations">
+    <div class="row text-center justify-content-center">
+        @foreach (var formation in Model)
+        {
+            <div class="formation-block col-sm-6 col-md-3 col-lg-3">
+                @*<p>Id de la formation          : @formation.Id</p>*@
+                <p><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Formation.Id">@formation.Formation.name</a></p>
 
+                @if (formation.NoteMoyenne > 0)
+                {
+                    <h6>
+                        Mark : @formation.NoteMoyenne/5
+                        @for (int i = 1; i <= formation.NoteMoyenne; i++)
+                        {
+                            <span class="fa fa-star orange"></span>
+                        }
+                    </h6>
+                }
+                else
+                {
+                    <div><h6>Aucun Avis</h6></div>
+                }
 
+                @*<p>NomSeo de la formation      : @formation.Formation.nameSeo</p>*@
+                <p>Description de la formation : @formation.Formation.Descriotion</p>
 
-
-
-@*<br />
-<h1 class="text-center">VOICI QUELQUES FORMATIONS</h1>
-<br />
-@foreach (var formation in Model)
-{
-    <div>
-        <p>Id de la formation          : @formation.Id</p>
-        <p>Nom de la formation         : <a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Id">@formation.name</a></p>
-        <p>NomSeo de la formation      : @formation.nameSeo</p>
-        <p>Description de la formation : @formation.Descriotion</p>
+                
+                
+            </div>
+        }
     </div>
-    <br />
-}*@
+</div>
 
 @section Scripts 
 {
