@@ -28,6 +28,7 @@ namespace AvisFormation.Controllers
             {
                 vm.Add(new DetailFormationViewModel { Formation = f, NoteMoyenne = (float)f.Avis.Select(a => a.Note).DefaultIfEmpty(0).Average() });
             }
+
             return View(vm);
         }
 

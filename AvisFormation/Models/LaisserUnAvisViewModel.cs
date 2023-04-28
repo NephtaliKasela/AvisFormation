@@ -6,7 +6,7 @@ namespace AvisFormation.Models
 {
     public class LaisserUnAvisViewModel
     {
-        [StringLength(5, ErrorMessage ="The length must be less than six")]
+        [StringLength(500, ErrorMessage ="Out of range. The length must be less than 500 !")]
         public string Commentaire { get; set; }
         [Required]
         public string Nom{ get; set; }

@@ -10,7 +10,7 @@ namespace Data
     public class Avis
     {
         public int Id { get; set; }
-        [MaxLength(2000)]
+        [StringLength(500)]
         public string Commentaire { get; set; }
         [Required]
         public double Note { get; set; }
@@ -18,6 +18,5 @@ namespace Data
         public string NomUtilisateur { get; set; }
         public int FormationId { get; set; }
         public Formation Formation { get; set; }
-
     }
 }
