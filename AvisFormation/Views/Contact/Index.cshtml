@@ -3,33 +3,36 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
-    <h2>Contactez nous !</h2>
-</div>
+<header class="header mt-3">
+    <h2>Contactez-nous !</h2>
+</header>
 <br />
 
-@{  /* Get info from the user */  }
-<form action="/Contact/SaveMessage" method="post">
-    <div class="form-group">
-        <label>Nom :</label>
-        <input type="text" name="name" value="@Model.Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Email :</label>
-        <input type="email" name="email" value="@Model.Email" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Message :</label>
-        <textarea cols="10" name="message" class="form-control">@Model.Message</textarea>
-    </div>
-    
-    <br />
-    <input type="submit" value="Send" class="btn-lg btn-outline-warning" />
-    <br />
-    <br />
-    <div class="widget-bottom">
-        @Html.ValidationSummary()
-    </div>
-    
-</form>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form action="/Contact/SaveMessage" method="post">
+                <div class="form-group">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" value="@Model.Name" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" value="@Model.Email" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="message">Message :</label>
+                    <textarea id="message" cols="10" name="message" class="form-control" style="height:200px;" required>@Model.Message</textarea>
+                </div>
 
+                <br />
+                <input type="submit" value="Envoyer" class="btn btn-outline-secondary" />
+                <br />
+                <br />
+                @*<div class="widget-bottom" style="background-color: #333;">
+                    @Html.ValidationSummary()
+                </div>*@
+            </form>
+        </div>
+    </div>
+</div>

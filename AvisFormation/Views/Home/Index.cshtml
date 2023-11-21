@@ -3,114 +3,101 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>*@
-
-
-<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
-    <h1>Avis Formations</h1>
-    <p>We provide the best training in the wold !</p>
-</div>
-
-<section class="avantages">
-    <div class="row text-center">
-        <div class="col-md-6 col-lg-3">
-            <span class="fa fa-check fa-3x orange"></span>
-            <h3>Authentiques</h3>
-            <p>Des avis d'élèves bien réels.</p>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <span class="fa fa-glasses fa-3x orange"></span>
-            <h3>Transparance</h3>
-            <p>Rien ne vous est cache.</p>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <span><i class="fa-solid fa-thumbs-up fa-3x orange"></i></span>
-            <h3>Platforme indépendante</h3>
-            <p>Indépendances de organismes de formation</p>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <span class="fa fa-dollar-sign fa-3x orange"></span>
-            <h3>Gratuit</h3>
-            <p>Tout notre travail gratuit pour vous !</p>
-        </div>
-    </div>
-</section>
-
-<section class="section-badge text-center">
-    <div class="row">
-        <div class="col-md-8 col-lg-8 paragraph11">
-            <h4>Professionnels de la formation, affichez notre badge sur</h4>
-        </div>
-        <div class="col-md-4 col-lg-4">
-            <div class="widget">
-                <div class="widget-top">
-                    @{
-                        double note = 0;
-                        @foreach (var formation in Model)
-                        {
-                            note += formation.NoteMoyenne;
-                        }
-                        double noteFinale = 0;
-                        noteFinale = (note * 5) / (Model.Count * 5);
-                        noteFinale = Math.Round(noteFinale);
-                        <h6>
-                            Avis élèves @noteFinale/5
-                            @for (int i = 1; i < noteFinale; i++)
-                            {
-                                <span class="fa fa-star orange"></span>
-                            }
-                        </h6>
-                    }
-                </div>
-                <div class="widget-bottom">
-                    <h7>Avis récoltés par AvisFormations.Fr</h7>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<div class="section-formations">
-    <div class="row text-center justify-content-center">
-        @foreach (var formation in Model)
-        {
-            <div class="formation-block col-sm-6 col-md-3 col-lg-3">
-                @*<p>Id de la formation          : @formation.Id</p>*@
-                <p><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Formation.Id">@formation.Formation.name</a></p>
-
-                @if (formation.NoteMoyenne > 0)
-                {
-                    <h6>
-                        Mark : @formation.NoteMoyenne/5
-                        @for (int i = 1; i <= formation.NoteMoyenne; i++)
-                        {
-                            <span class="fa fa-star orange"></span>
-                        }
-                    </h6>
-                }
-                else
-                {
-                    <div><h6>Aucun Avis</h6></div>
-                }
-
-                @*<p>NomSeo de la formation      : @formation.Formation.nameSeo</p>*@
-                <p>Description de la formation : @formation.Formation.Descriotion</p>
-
-                
-                
-            </div>
-        }
-    </div>
-</div>
-
-@section Scripts 
+@*@section Scripts 
 {
     <script>
         $(document).ready( function() { alert('Hi Nepht !'); } );
     </script>
-} 
+}*@ 
+
+  <header class="header mt-3">
+    <h1>Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+  </header>
+
+  <section class="advantages">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <i class="fas fa-check"></i>
+          <h3>Authentiques</h3>
+          <p>Des avis d'élèves bien réels.</p>
+        </div>
+        <div class="col-md-6">
+          <i class="fas fa-glasses"></i>
+          <h3>Transparence</h3>
+          <p>Rien ne vous est caché.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <i class="fas fa-thumbs-up"></i>
+          <h3>Plateforme indépendante</h3>
+          <p>Pas de favoritisme.</p>
+        </div>
+        <div class="col-md-6">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Gratuit</h3>
+          <p>Tout notre travail gratuit pour vous !</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr />
+<section class="section-badge bg-light text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8 text-center pt-3">
+                <h4>Professionnels de la formation, affichez notre badge sur</h4>
+            </div>
+            <div class="col-md-4 col-lg-4 text-center">
+                <div class="card widget">
+                    <div class="card-body">
+                        @{
+                            double note2 = 0;
+                            foreach (var formation in Model)
+                            {
+                                note2 += formation.NoteMoyenne;
+                            }
+                            double noteFinale2 = 0;
+                            noteFinale2 = (note2 * 5) / (Model.Count * 5);
+                            noteFinale2 = Math.Round(noteFinale2);
+                            <h6 class="card-title">
+                                Avis élèves @noteFinale2/5
+                                @for (int i = 1; i <= noteFinale2; i++)
+                                {
+                                    <span class="fa fa-star orange"></span>
+                                }
+                            </h6>
+                        }
+                        <div class="card-text">Avis récoltés par AvisFormations.Fr</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <section class="formations">
+    <div class="container">
+      <div class="row">
+        @foreach (var formation in Model)
+        {
+          <div class="col-md-6">
+            <div class="formation-block">
+              <p><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Formation.Id">@formation.Formation.name</a></p>
+              <p>Description de la formation: @formation.Formation.Descriotion</p>
+              @if (formation.NoteMoyenne > 0)
+              {
+                <p>Note moyenne: @formation.NoteMoyenne/5</p>
+              }
+              else
+              {
+                <p>Aucun avis</p>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>

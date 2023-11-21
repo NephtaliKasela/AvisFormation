@@ -47,7 +47,6 @@ namespace AvisFormation.Controllers
                 return View("LaisserUnAvis", viewModel);
             }
 
-
             if(string.IsNullOrEmpty(viewModel.NomFormation) || string.IsNullOrEmpty(viewModel.Note))
             {
                 return RedirectToAction("LaisserUnAvis", new { idFormation = viewModel.IdFormation });

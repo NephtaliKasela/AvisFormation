@@ -3,42 +3,56 @@
     ViewData["Title"] = Model.Formation.name;
 }
 
-<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
-    <h2>@Model.Formation.name</h2>
+<header class="header mt-3">
+    <h1>@Model.Formation.name</h1>
     <h6>@Model.Formation.Descriotion</h6>
-</div>
+</header>
+
 <br />
 
-<div class="widget-bottom">
-    <a asp-controller="Avis" asp-action="LaisserUnAvis" asp-route-idFormation="@Model.Formation.Id"><h6>Laisser un avis</h6></a>
-</div>
-
-<div class="widget-top">
-    <h6>
-        Mark : @Model.NoteMoyenne / 5
-        @for(int i = 1; i <= Model.NoteMoyenne; i++)
-        {
-            <span class="fa fa-star orange"></span>
-        }
-    </h6>
-</div>
-
-<h7>Voici ce qu'en disent les anciens élèves :</h7>
-<br />
-    
-@foreach(var avis in Model.Formation.Avis)
-{
-<div class="avis-block">
-
-    <div>
-        @avis.Note/5
-        @for (int i = 1; i <= avis.Note; i++)
-        {
-            <span class="fa fa-star orange"></span>
-        }
+<div class="mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="widget-bottom" style="background-color:white;">
+                <a asp-controller="Avis" asp-action="LaisserUnAvis" asp-route-idFormation="@Model.Formation.Id" class="btn btn-outline-secondary btn-sm btn-block">Laisser un avis</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="widget-top">
+                <h6>
+                    Mark: @Model.NoteMoyenne / 5
+                    @for (int i = 1; i <= Model.NoteMoyenne; i++)
+                    {
+                        <span class="fa fa-star orange"></span>
+                    }
+                </h6>
+            </div>
+        </div>
     </div>
-        <div><i><h6>@avis.NomUtilisateur</h6></i></div>
-        <div><h6>@avis.Commentaire</h6></div>
 </div>
-}
 
+<h5>Voici ce qu'en disent les anciens élèves :</h5>
+<br />
+
+@foreach (var avis in Model.Formation.Avis)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="card-subtitle mb-2">@avis.NomUtilisateur</h6>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="card-title">
+                        @avis.Note/5
+                        @for (int i = 1; i <= avis.Note; i++)
+                        {
+                            <span class="fa fa-star orange"></span>
+                        }
+                    </h6>
+                    <p class="card-text">@avis.Commentaire</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

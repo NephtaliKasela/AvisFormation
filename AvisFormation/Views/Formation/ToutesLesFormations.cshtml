@@ -6,35 +6,38 @@
     ViewData["Title"] = "Toutes les formations";
 }
 
-<div class="mt-4 p-5 bg-primary text-orange text-center bg-black rounded">
-    <h2>TOUTES LES FORMATIONS</h2>
-</div>
+<header class="header mt-3">
+    <h1>TOUTES LES FORMATIONS</h1>
+</header>
 <br />
 <br />
-<div class="section-formations">
-    <div class="row text-center justify-content-center">
+<div class="container">
+    <div class="row justify-content-center">
         @foreach (var formation in Model)
         {
-            <div class="formation-block col-sm-6 col-md-3 col-lg-3">
-                @*<p>Id de la formation          : @formation.Id</p>*@
-                <p><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Formation.Id">@formation.Formation.name</a></p>
-                <p>NomSeo de la formation      : @formation.Formation.nameSeo</p>
-                <p>Description de la formation : @formation.Formation.Descriotion</p>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a asp-controller="Formation" asp-action="DetailsFormation" asp-route-idFormation="@formation.Formation.Id">@formation.Formation.name</a></h5>
+                        <p class="card-text">NomSeo de la formation: @formation.Formation.nameSeo</p>
+                        <p class="card-text">Description de la formation: @formation.Formation.Descriotion</p>
 
-                @if (formation.NoteMoyenne > 0)
-                {
-                    <h6>
-                        Mark : @formation.NoteMoyenne/5
-                        @for (int i = 1; i <= formation.NoteMoyenne; i++)
+                        @if (formation.NoteMoyenne > 0)
                         {
-                            <span class="fa fa-star orange"></span>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Mark: @formation.NoteMoyenne/5
+                                @for (int i = 1; i <= formation.NoteMoyenne; i++)
+                                {
+                                    <span class="fa fa-star orange"></span>
+                                }
+                            </h6>
                         }
-                    </h6>
-                }
-                else
-                {
-                    <div><h6>Aucun Avis</h6></div>
-                }
+                        else
+                        {
+                            <div><h6 class="card-subtitle mb-2 text-muted">Aucun Avis</h6></div>
+                        }
+                    </div>
+                </div>
             </div>
         }
     </div>
